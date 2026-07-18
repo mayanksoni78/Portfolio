@@ -11,16 +11,16 @@ import {
 import { FaTrophy } from 'react-icons/fa';
 
 const coreSkills = [
-  { name: 'Javascript', icon: SiJavascript, color: 'text-yellow-400 group-hover:brightness-125' },
-  { name: 'React JS', icon: SiReact, color: 'text-cyan-400 group-hover:brightness-125' },
-  { name: 'React Native', icon: SiReact, color: 'text-cyan-500 group-hover:brightness-125' },
-  { name: 'Next JS', icon: SiNextdotjs, color: 'text-white group-hover:brightness-125' },
-  { name: 'HTML', icon: SiHtml5, color: 'text-orange-500 group-hover:brightness-125' },
-  { name: 'CSS', icon: SiCss, color: 'text-blue-500 group-hover:brightness-125' },
-  { name: 'Node Js', icon: SiNodedotjs, color: 'text-green-500 group-hover:brightness-125' },
-  { name: 'MongoDB', icon: SiMongodb, color: 'text-green-400 group-hover:brightness-125' },
-  { name: 'Express JS', icon: SiExpress, color: 'text-slate-300 group-hover:text-white' },
-  { name: 'MySql', icon: SiMysql, color: 'text-blue-400 group-hover:brightness-125' },
+  { name: 'Javascript', icon: SiJavascript, color: 'text-yellow-400 group-hover:brightness-110' },
+  { name: 'React JS', icon: SiReact, color: 'text-[#06b6d4] group-hover:brightness-110' },
+  { name: 'React Native', icon: SiReact, color: 'text-[#0ea5e9] group-hover:brightness-110' },
+  { name: 'Next JS', icon: SiNextdotjs, color: 'text-[var(--color-text-primary)] group-hover:brightness-125' },
+  { name: 'HTML', icon: SiHtml5, color: 'text-orange-500 group-hover:brightness-110' },
+  { name: 'CSS', icon: SiCss, color: 'text-blue-500 group-hover:brightness-110' },
+  { name: 'Node Js', icon: SiNodedotjs, color: 'text-green-600 group-hover:brightness-110' },
+  { name: 'MongoDB', icon: SiMongodb, color: 'text-green-500 group-hover:brightness-110' },
+  { name: 'Express JS', icon: SiExpress, color: 'text-[var(--color-text-secondary)] group-hover:text-[var(--color-text-primary)]' },
+  { name: 'MySql', icon: SiMysql, color: 'text-blue-500 group-hover:brightness-110' },
 ];
 
 const getPlatformIcon = (title: string) => {
@@ -185,7 +185,7 @@ export default function About() {
               </motion.h2>
 
               {/* Divider */}
-              <div className="mt-4 mb-12 w-16 h-px bg-gradient-to-r from-transparent via-cyan-400/70 to-transparent" />
+              <div className="mt-4 mb-12 w-16 h-px bg-gradient-to-r from-transparent via-[var(--color-accent)] to-transparent opacity-70" />
                <div className="h-7 md:h-12" />
               <motion.div 
                 variants={containerVariants}
@@ -201,10 +201,10 @@ export default function About() {
                     whileHover={{ y: -6, scale: 1.08 }}
                     className="flex flex-col items-center justify-center gap-3 group w-[90px] md:w-[100px] cursor-default"
                   >
-                    <div className="w-16 h-16 md:w-[72px] md:h-[72px] rounded-2xl bg-white/[0.04] border border-white/[0.10] flex items-center justify-center transition-all duration-300 group-hover:border-cyan-400/40 group-hover:shadow-[0_0_18px_rgba(6,182,212,0.15)] group-hover:bg-white/[0.08]">
+                    <div className="w-16 h-16 md:w-[72px] md:h-[72px] rounded-2xl bg-[var(--color-button-secondary)] border border-[var(--color-border)] flex items-center justify-center transition-all duration-300 group-hover:border-[var(--color-accent)] group-hover:shadow-[0_0_18px_var(--color-glow)] group-hover:bg-[var(--color-button-secondary-hover)]">
                       <skill.icon className={`text-3xl md:text-4xl transition-colors duration-300 ${skill.color}`} />
                     </div>
-                    <span className="text-[var(--color-text-secondary)] text-xs md:text-sm font-medium whitespace-nowrap text-center group-hover:text-white transition-colors duration-300 tracking-wide">
+                    <span className="text-[var(--color-text-secondary)] text-xs md:text-sm font-medium whitespace-nowrap text-center group-hover:text-[var(--color-text-primary)] transition-colors duration-300 tracking-wide">
                       {skill.name}
                     </span>
                   </motion.div>

@@ -18,27 +18,41 @@ export default function Contact() {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) return;
 
+    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+
+    // Ensure EmailJS is configured
+    if (!serviceId || !templateId || !publicKey) {
+      alert('Please configure your EmailJS keys in the .env.local file to send messages.');
+      setIsSubmitting(false);
+      return;
+    }
+
     setIsSubmitting(true);
     setStatus('idle');
 
     try {
       await emailjs.send(
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || '',
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || '',
+        serviceId,
+        templateId,
         {
           from_name: formData.name,
           reply_to: formData.email,
           message: formData.message,
           to_name: personalInfo.name,
         },
-        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || ''
+        publicKey
       );
       
       setStatus('success');
       setFormData({ name: '', email: '', message: '' });
       setTimeout(() => setStatus('idle'), 4000);
-    } catch (error) {
+    } catch (error: any) {
       console.error('Failed to send email:', error);
+      // EmailJS errors usually have a 'text' property
+      const errorMsg = error?.text || error?.message || 'Failed to send message. Please try again later.';
+      alert(`EmailJS Error: ${errorMsg}`);
       setStatus('error');
     } finally {
       setIsSubmitting(false);
@@ -54,8 +68,8 @@ export default function Contact() {
 
   return (
     <section id="contact" className="relative py-28 overflow-hidden">
-      <div className="absolute top-1/4 left-[-10%] w-[30rem] h-[30rem] bg-cyan-500/5 rounded-full blur-[150px] pointer-events-none mix-blend-screen" />
-      <div className="absolute bottom-1/4 right-[-10%] w-[30rem] h-[30rem] bg-blue-600/5 rounded-full blur-[150px] pointer-events-none mix-blend-screen" />
+      <div className="absolute top-1/4 left-[-10%] w-[30rem] h-[30rem] bg-[var(--color-accent)]/5 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-1/4 right-[-10%] w-[30rem] h-[30rem] bg-[var(--color-glow)] rounded-full blur-[150px] pointer-events-none" />
 
       <div className="relative z-10 w-full max-w-8xl mx-auto px-6 md:px-10 lg:px-24 flex flex-col items-center justify-center">
         <div style={{ height: '80px' }} />
@@ -82,7 +96,7 @@ export default function Contact() {
               style={{ display: 'flex', flexDirection: 'column', gap: '28px' }}
             >
               <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
-                <h3 className="text-2xl lg:text-3xl font-medium font-[family-name:var(--font-heading)] text-white tracking-tight">
+                <h3 className="text-2xl lg:text-3xl font-medium font-[family-name:var(--font-heading)] text-[var(--color-text-primary)] tracking-tight">
                   Contact Information
                 </h3>
                 <p className="text-base text-[var(--color-text-secondary)] leading-relaxed font-light">
@@ -171,8 +185,8 @@ export default function Contact() {
                         value={formData.name}
                         onChange={handleChange}
                         required
-                        placeholder="abc"
-                        className="w-full bg-white/5 border border-[var(--color-border)] rounded-lg text-white placeholder:text-gray-500 focus:border-[var(--color-accent)] focus:bg-white/10 focus:ring-1 focus:ring-[var(--color-accent)] focus:outline-none transition-all duration-300"
+                        placeholder="Enter your name"
+                        className="w-full bg-[var(--color-button-secondary)] border border-[var(--color-border)] rounded-lg text-[var(--color-text-primary)] placeholder:text-[var(--color-text-tertiary)] focus:border-[var(--color-accent)] focus:bg-[var(--color-button-secondary-hover)] focus:ring-1 focus:ring-[var(--color-accent)] focus:outline-none transition-all duration-300"
                         style={{ padding: '14px 16px' }}
                       />
                     </div>
@@ -188,8 +202,8 @@ export default function Contact() {
                         value={formData.email}
                         onChange={handleChange}
                         required
-                        placeholder="abc@example.com"
-                        className="w-full bg-white/5 border border-[var(--color-border)] rounded-lg text-white placeholder:text-gray-500 focus:border-[var(--color-accent)] focus:bg-white/10 focus:ring-1 focus:ring-[var(--color-accent)] focus:outline-none transition-all duration-300"
+                        placeholder="Enter your email"
+                        className="w-full bg-[var(--color-button-secondary)] border border-[var(--color-border)] rounded-lg text-[var(--color-text-primary)] placeholder:text-[var(--color-text-tertiary)] focus:border-[var(--color-accent)] focus:bg-[var(--color-button-secondary-hover)] focus:ring-1 focus:ring-[var(--color-accent)] focus:outline-none transition-all duration-300"
                         style={{ padding: '14px 16px' }}
                       />
                     </div>
@@ -207,7 +221,7 @@ export default function Contact() {
                       required
                       placeholder="Hello, I'd like to talk about..."
                       rows={4}
-                      className="w-full bg-white/5 border border-[var(--color-border)] rounded-lg text-white placeholder:text-gray-500 focus:border-[var(--color-accent)] focus:bg-white/10 focus:ring-1 focus:ring-[var(--color-accent)] focus:outline-none transition-all duration-300 resize-none"
+                      className="w-full bg-[var(--color-button-secondary)] border border-[var(--color-border)] rounded-lg text-[var(--color-text-primary)] placeholder:text-[var(--color-text-tertiary)] focus:border-[var(--color-accent)] focus:bg-[var(--color-button-secondary-hover)] focus:ring-1 focus:ring-[var(--color-accent)] focus:outline-none transition-all duration-300 resize-none"
                       style={{ padding: '14px 16px' }}
                     />
                   </div>
@@ -216,7 +230,7 @@ export default function Contact() {
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full bg-[var(--color-accent)] text-white rounded-lg font-bold tracking-wide hover:brightness-110 shadow-[0_0_15px_rgba(6,182,212,0.2)] transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed hover:shadow-[0_0_25px_rgba(6,182,212,0.4)]"
+                      className="w-full bg-[var(--color-accent)] text-[var(--color-bg-primary)] rounded-lg font-bold tracking-wide hover:brightness-110 shadow-[0_0_15px_var(--color-glow)] transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed hover:shadow-[0_0_25px_var(--color-glow)]"
                       style={{ padding: '14px 0' }}
                     >
                       {isSubmitting ? (

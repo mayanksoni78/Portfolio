@@ -15,7 +15,7 @@ export default function SkillBadge({ name, index }: SkillBadgeProps) {
       viewport={{ once: true }}
       transition={{ delay: index * 0.05, duration: 0.3 }}
       whileHover={{ scale: 1.05 }}
-      className="glass px-4 py-2 rounded-full border border-[#2a2a2a] text-sm text-[#a0a0a0] hover:border-[#444] transition-colors cursor-default"
+      className="glass px-4 py-2 rounded-full border border-[var(--color-border)] text-sm text-[var(--color-text-secondary)] hover:border-[var(--color-border-light)] hover:text-[var(--color-text-primary)] transition-colors cursor-default"
     >
       {name}
     </motion.div>

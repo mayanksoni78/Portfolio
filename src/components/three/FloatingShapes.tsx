@@ -1,14 +1,25 @@
 'use client';
-import React, { useRef, useMemo } from 'react';
+import React, { useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 import { Sphere, MeshDistortMaterial } from '@react-three/drei';
+import { useTheme } from 'next-themes';
 
 export default function FloatingShapes() {
   const groupRef = useRef<THREE.Group>(null!);
   const sphere1Ref = useRef<THREE.Mesh>(null!);
   const sphere2Ref = useRef<THREE.Mesh>(null!);
   const sphere3Ref = useRef<THREE.Mesh>(null!);
+  const { theme } = useTheme();
+
+  const isDark = theme === 'dark';
+
+  // Theme-aware colors
+  const color1 = isDark ? '#06b6d4' : '#658147'; // Primary orb
+  const color2 = isDark ? '#0ea5e9' : '#506738'; // Secondary orb
+  const color3 = isDark ? '#67e8f9' : '#8faa6e'; // Background orb
+  const lightColor1 = isDark ? '#06b6d4' : '#658147';
+  const lightColor2 = isDark ? '#0ea5e9' : '#506738';
 
   useFrame((state) => {
     const t = state.clock.getElapsedTime();
@@ -39,48 +50,48 @@ export default function FloatingShapes() {
       {/* Primary elegant glowing orb */}
       <Sphere ref={sphere1Ref} args={[1, 64, 64]} position={[-2, 1, -3]} scale={1.2}>
         <MeshDistortMaterial 
-          color="#06b6d4" 
+          color={color1}
           attach="material" 
           distort={0.4} 
           speed={1.5} 
           roughness={0.2} 
           metalness={0.8} 
           transparent
-          opacity={0.7}
+          opacity={isDark ? 0.7 : 0.25}
         />
       </Sphere>
 
       {/* Secondary accent orb */}
       <Sphere ref={sphere2Ref} args={[1, 64, 64]} position={[2, -1, -4]} scale={1.5}>
         <MeshDistortMaterial 
-          color="#0ea5e9" 
+          color={color2}
           attach="material" 
           distort={0.5} 
           speed={2} 
           roughness={0.1} 
           metalness={0.5} 
           transparent
-          opacity={0.5}
+          opacity={isDark ? 0.5 : 0.18}
         />
       </Sphere>
 
       {/* Background soft orb */}
       <Sphere ref={sphere3Ref} args={[1, 64, 64]} position={[0, 0, -6]} scale={2}>
         <MeshDistortMaterial 
-          color="#67e8f9" 
+          color={color3}
           attach="material" 
           distort={0.3} 
           speed={1} 
           roughness={0.5} 
           metalness={0.2} 
           transparent
-          opacity={0.3}
+          opacity={isDark ? 0.3 : 0.12}
         />
       </Sphere>
       
       {/* Point lights to add glow */}
-      <pointLight position={[-2, 1, -1]} color="#06b6d4" intensity={2} distance={5} />
-      <pointLight position={[2, -1, -2]} color="#0ea5e9" intensity={1.5} distance={5} />
+      <pointLight position={[-2, 1, -1]} color={lightColor1} intensity={isDark ? 2 : 0.8} distance={5} />
+      <pointLight position={[2, -1, -2]} color={lightColor2} intensity={isDark ? 1.5 : 0.5} distance={5} />
     </group>
   );
 }

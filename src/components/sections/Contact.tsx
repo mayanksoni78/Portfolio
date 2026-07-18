@@ -48,11 +48,8 @@ export default function Contact() {
       setStatus('success');
       setFormData({ name: '', email: '', message: '' });
       setTimeout(() => setStatus('idle'), 4000);
-    } catch (error: any) {
+    } catch (error) {
       console.error('Failed to send email:', error);
-      // EmailJS errors usually have a 'text' property
-      const errorMsg = error?.text || error?.message || 'Failed to send message. Please try again later.';
-      alert(`EmailJS Error: ${errorMsg}`);
       setStatus('error');
     } finally {
       setIsSubmitting(false);

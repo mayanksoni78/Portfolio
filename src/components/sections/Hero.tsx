@@ -37,7 +37,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center pt-12 pb-8 overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center pt-32 pb-8 overflow-hidden"
     >
       {/* Animated Background Blobs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -113,7 +113,7 @@ export default function Hero() {
 
           <motion.div
             variants={fadeInUp}
-            className="flex flex-row items-center justify-center gap-5 sm:gap-6 relative z-20 w-full"
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 relative z-20 w-full"
           >
             <a
               href="#projects"

@@ -47,14 +47,14 @@ export default function Projects() {
                 <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-glass-border)] to-transparent pointer-events-none" />
                 
                 {/* ─── Project Image Wrapper ─── */}
-                <div className="w-[calc(100%-1.5rem)] lg:w-[42%] h-64 sm:h-80 lg:h-[340px] relative rounded-2xl overflow-hidden bg-gradient-to-br from-[var(--color-bg-secondary)] to-[var(--color-bg-tertiary)] border border-[var(--color-border)] flex items-center justify-center shrink-0 z-10 ml-6 lg:ml-12 self-start lg:self-center">
+                <div className="w-full lg:w-[42%] h-64 sm:h-80 lg:h-[340px] relative rounded-2xl overflow-hidden bg-gradient-to-br from-[var(--color-bg-secondary)] to-[var(--color-bg-tertiary)] border border-[var(--color-border)] flex items-center justify-center shrink-0 z-10 mx-auto lg:mx-0 lg:ml-12 self-center">
                   <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,var(--color-glow)_0%,transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20" />
                   {project.image ? (
                     <Image
                       src={project.image}
                       alt={`${project.title} screenshot`}
                       fill
-                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                      className="object-contain p-2 md:p-6 transition-transform duration-700 ease-out group-hover:scale-105"
                     />
                   ) : (
                     <div className="absolute inset-0 flex items-center justify-center transition-transform duration-700 ease-out group-hover:scale-105">

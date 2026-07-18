@@ -111,22 +111,11 @@ export const education: Education[] = [
     institution: 'Indian Institute of Information Technology (IIIT), Vadodara',
     degree: 'B.Tech in Computer Science and Engineering',
     duration: '2024 — Present',
-    grade: 'CPI: 7.83 / 10',
+    grade: '',
     description:
       'Coursework: Data Structures & Algorithms, Object-Oriented Programming, DBMS, Operating Systems',
   },
-  {
-    institution: 'S.G.T.B. Academy',
-    degree: 'CBSE — Class XII',
-    duration: '2022-2023',
-    grade: 'Percentage: 89.6%',
-  },
-  {
-    institution: 'S.G.T.B. Academy',
-    degree: 'CBSE — Class X',
-    duration: '2020-2021',
-    grade: 'Percentage: 88.6%',
-  },
+  
 ];
 
 export const achievements: Achievement[] = [

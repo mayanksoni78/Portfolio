@@ -114,12 +114,7 @@ export default function Experience() {
                         </p>
                       </div>
 
-                      <div className="flex flex-wrap items-center gap-3 w-full" style={gapBelowBadgeStyle}>
-                        <span className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[var(--color-button-secondary)] border border-[var(--color-border)] text-[var(--color-text-secondary)] text-sm font-medium group-hover:border-[var(--color-border-light)] group-hover:text-[var(--color-text-primary)] transition-colors duration-300">
-                          <Award size={16} className="text-[var(--color-accent)]" />
-                          {item.grade}
-                        </span>
-                      </div>
+                      
                       
                       {item.description && (
                         <p className="text-base text-[var(--color-text-secondary)] leading-relaxed font-light group-hover:text-[var(--color-text-primary)] transition-colors duration-300">

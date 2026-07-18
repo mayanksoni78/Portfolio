@@ -48,7 +48,7 @@ export default function Hero() {
       </div>
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-16 lg:px-24">
-         <div className="h-5" />
+         <div className="h-12" />
         <motion.div
           variants={staggerContainer}
           initial="hidden"

@@ -37,7 +37,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center pt-32 pb-8 overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center pt-40 md:pt-44 pb-8 overflow-hidden"
     >
       {/* Animated Background Blobs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -48,7 +48,7 @@ export default function Hero() {
       </div>
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-16 lg:px-24">
-         <div className="h-12" />
+         <div className="h-33" />
         <motion.div
           variants={staggerContainer}
           initial="hidden"
@@ -136,12 +136,13 @@ export default function Hero() {
       </div>
 
       <motion.div
-        className="absolute bottom-4 left-1/2 -translate-x-1/2 text-[var(--color-text-tertiary)]"
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 text-[var(--color-text-tertiary)]"
         animate={{ y: [0, 10, 0] }}
         transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
       >
         <ChevronDown size={24} />
       </motion.div>
+      
     </section>
   );
 }

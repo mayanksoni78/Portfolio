@@ -69,6 +69,29 @@ export const projects: Project[] = [
     liveUrl: 'https://learn-flex-yw72.vercel.app/HomePage',
     image: '/images/projects/learnflex.png',
   },
+  {
+  id: 'air-canvas',
+  title: 'Air Canvas',
+  subtitle: 'Real-Time Gesture Drawing Application',
+  description:
+    'An interactive Computer Vision application that enables users to draw virtually using real-time hand gestures. Built with MediaPipe and OpenCV, the system delivers smooth, touchless drawing through accurate hand tracking and gesture recognition.',
+  techStack: [
+    'Python',
+    'OpenCV',
+    'MediaPipe',
+    'NumPy',
+    'OOP'
+  ],
+  highlights: [
+    'Developed a real-time hand tracking system using MediaPipe to detect and process all 21 hand landmarks with high accuracy.',
+    'Engineered an intelligent gesture recognition pipeline that maps a single index finger to drawing mode and two-finger gestures to color selection and UI interaction.',
+    'Implemented a responsive virtual canvas featuring multi-color selection, smooth stroke rendering, and an intuitive gesture-controlled eraser.',
+    'Optimized live webcam frame processing with OpenCV and NumPy to deliver low-latency performance and a seamless drawing experience.',
+  ],
+  githubUrl: 'https://github.com/mayanksoni78/Air_Canvas',
+  liveUrl: '', // Remove this field if no live demo is available
+  image: '/images/projects/air-canvas.png',
+},
 ];
 
 export const skills: Skill[] = [

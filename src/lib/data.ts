@@ -70,6 +70,29 @@ export const projects: Project[] = [
     image: '/images/projects/learnflex.png',
   },
   {
+  id: 'gameon',
+  title: 'GameOn',
+  subtitle: 'Modern Multi-Game Web Platform',
+  description:
+    'A feature-rich gaming platform offering a collection of classic arcade and puzzle games with a unified premium UI, responsive gameplay, real-time score tracking, and seamless cross-device controls. Built with modern web technologies to deliver a smooth and engaging gaming experience.',
+  techStack: [
+    'React.js',
+    'Node.js',
+    'Express.js',
+    'Tailwind CSS',
+    'JavaScript'
+  ],
+  highlights: [
+    'Designed and developed a scalable full-stack gaming platform featuring multiple interactive games with a consistent premium user experience.',
+    'Built a secure backend using Node.js, Express.js, and MongoDB for user authentication, leaderboard management, score tracking, and player progress.',
+    'Implemented responsive desktop and mobile controls, including keyboard support, touch gestures, and optimized gameplay across devices.',
+    'Engineered reusable React components, RESTful APIs, and modern UI architecture with smooth animations, glassmorphism design, and real-time game state management.'
+  ],
+  githubUrl: 'https://github.com/your-username/GameOn',
+  liveUrl: 'https://your-live-demo.com',
+  image: '/images/projects/gameon.png',
+},
+  {
   id: 'air-canvas',
   title: 'Air Canvas',
   subtitle: 'Real-Time Gesture Drawing Application',
@@ -90,7 +113,7 @@ export const projects: Project[] = [
   ],
   githubUrl: 'https://github.com/mayanksoni78/Air_Canvas',
   liveUrl: '', // Remove this field if no live demo is available
-  image: '/images/projects/air-canvas.png',
+  image: '/images/projects/aircanvas.png',
 },
 ];
 

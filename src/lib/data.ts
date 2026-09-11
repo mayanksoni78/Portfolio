@@ -113,7 +113,7 @@ export const projects: Project[] = [
   ],
   githubUrl: 'https://github.com/mayanksoni78/Air_Canvas',
   liveUrl: '', // Remove this field if no live demo is available
-  image: '/images/projects/aircanvas.png',
+  image: '/images/projects/aicanvas.png',
 },
 ];
 

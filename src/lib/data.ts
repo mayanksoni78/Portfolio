@@ -7,7 +7,7 @@ export const personalInfo: PersonalInfo = {
   bio: "I am a Computer Science student at IIIT Vadodara driven by a passion for building scalable web applications that solve complex real world problems. With deep expertise in the MERN stack and a robust foundation in data structures and algorithms, I have successfully solved over 1000 problems across various competitive programming platforms. I combine engineering rigor with creative problem solving to deliver impactful and efficient software solutions.",
   email: 'mayanksoni782005@gmail.com',
   phone: '+91 9644480966',
-  resumeUrl: '/resume.pdf',
+resumeUrl: 'public/resume.pdf',
   location: 'Ratlam, Madhya Pradesh, India',
 };
 
